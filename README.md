@@ -67,18 +67,20 @@ C1_predictWithDL.py：深度学习预测
 >>模型名称Model（eg.SVMModel.h5）
 
 ## 3.代码架构
->#coding:utf8
->
->import pandas as pd
->import numpy as np
->
->def getTimeItemData():
->    '''获取 时间-商品 数据'''
->    trainDf=pd.read_csv("data/Antai_AE_round1_item_attr_20190626.csv")[:50]
->    print(trainDf[:2])
->    timeList=list(set(np.array(trainDf["create_order_time"]).tolist()))
->    timeItemList=[[timeItem,",".join(np.array(trainDf.loc["item_id",trainDf["create_order_time"]==timeItem]).tolist())] for timeItem in >timeList]
->    print(timeItemList)
->
->if __name__=="__main__":
->    getTimeItemData()
+````
+#coding:utf8
+
+import pandas as pd
+import numpy as np
+
+def getTimeItemData():
+    '''获取 时间-商品 数据'''
+    trainDf=pd.read_csv("data/Antai_AE_round1_item_attr_20190626.csv")[:50]
+    print(trainDf[:2])
+    timeList=list(set(np.array(trainDf["create_order_time"]).tolist()))
+    timeItemList=[[timeItem,",".join(np.array(trainDf.loc["item_id",trainDf["create_order_time"]==timeItem]).tolist())] for timeItem in timeList]
+    print(timeItemList)
+
+if __name__=="__main__":
+    getTimeItemData()
+````
