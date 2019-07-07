@@ -1,6 +1,6 @@
 # ProcedureInDA 使用说明
 
-## 文件架构
+## 1.文件架构
 大致流程分布包括：A（数据描述及预处理）、B（模型训练）、C（模型预测）[、D（模型整合）]
 目前所拥有的文件包括：
 
@@ -26,4 +26,15 @@ C1_predictWithDL.py：深度学习预测
 
 可在每一栏后新添自己相关新文件，并附带序号（eg.在B1后新添B2_trainSelf.py）
 
-## 命名方式
+## 2.命名方式
+
+变量命名（驼峰命名）：
+
+合成词汇“首个字母小写的单词+首字母大写的单词”（如：“开头时间”变量命名：startTime=time.time()）
+
+特殊情况：
+
+  同一容器进行多次数据类型变换时标识其容器类型（如：myDataArr=np.array(pd.read_csv("..."));myDataList=myDataArr.tolist()）
+  对某容器内容进行遍历for循环内个体变量以Item结尾（如遍历停止词列表[stopWordItem for stopWordItem in stopWordList]）
+ 
+
