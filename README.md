@@ -23,4 +23,4 @@ C0_predictWithML.py：传统机器学习预测
 
 C1_predictWithDL.py：深度学习预测	
 
-可在每一栏后新添自己的序号（eg.B2_trainSelf.py）
+可在每一栏后新添自己相关新文件，并附带序号（eg.在B1后新添B2_trainSelf.py）
