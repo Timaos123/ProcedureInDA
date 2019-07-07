@@ -26,7 +26,7 @@ C1_predictWithDL.py：深度学习预测
 
 可在每一栏后新添自己相关新文件，并附带序号（eg.在B1后新添B2_trainSelf.py）
 
-## 2.命名方式
+## 2.命名方式（皆单数形式命名）
 
 ### 变量命名（驼峰命名）：
 
@@ -38,7 +38,7 @@ C1_predictWithDL.py：深度学习预测
   
   对某容器内容进行遍历for循环内个体变量以Item结尾（如遍历停止词列表[stopWordItem for stopWordItem in stopWordList]）
   
-### 文件命名（皆单数形式命名）：
+### 文件命名：
 
 #### py文件：
   
