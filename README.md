@@ -28,13 +28,36 @@ C1_predictWithDL.py：深度学习预测
 
 ## 2.命名方式
 
-变量命名（驼峰命名）：
+### 变量命名（驼峰命名）：
 
 合成词汇“首个字母小写的单词+首字母大写的单词”（如：“开头时间”变量命名：startTime=time.time()）
 
 特殊情况：
 
-  同一容器进行多次数据类型变换时标识其容器类型（如：myDataArr=np.array(pd.read_csv("..."));myDataList=myDataArr.tolist()）
+  同一容器进行多次数据类型变换时标识其容器类型（如：myDataDf=pd.read_csv("...");myDataArr=np.array(myDataDf);myDataList=myDataArr.tolist()）
+  
   对某容器内容进行遍历for循环内个体变量以Item结尾（如遍历停止词列表[stopWordItem for stopWordItem in stopWordList]）
- 
+  
+### 文件命名（皆单数形式命名）：
 
+1. py文件：
+  
+>流程py文件：
+  
+>>流程字母（A（数据描述及预处理）、B（模型训练）、C（模型预测）[、D（模型整合）]）流程子步骤编号_子步骤名称（驼峰）（eg.C1_predictWithDL.py）
+  
+>工具py文件：
+
+>>驼峰命名，try开头（eg.trySQL.py）
+
+>data文件夹内文件
+
+>>pkl文件：标注pkl展开后的数据类型（eg.userItemDict.pkl）
+
+>>训练测试集相关文件：train/test驼峰命名（eg.trainMLMatrix.pkl）
+
+>>传统机器学习/深度学习相关文件：ML/DL驼峰命名（eg.trainMLMatrix.pkl）
+
+>model文件夹内文件
+
+>>模型名称Model（eg.SVMModel.h5）
