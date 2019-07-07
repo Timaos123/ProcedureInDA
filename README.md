@@ -4,13 +4,23 @@
 目前所拥有的文件包括：
 
 data
+
 log
+
 model
+
 A0_originalDataDes.py
+
 A1_preprocessingForML.py
+
 A2_preprocessingForDL
+
 B0_trainML
+
 B1_trainDL
+
 C0_predictWithML	
+
 C1_predictWithDL	
+
 README.md	
