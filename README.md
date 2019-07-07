@@ -1,5 +1,7 @@
 # ProcedureInDA 使用说明
 
+数据集地址：[https://tianchi.aliyun.com/competition/entrance/231718/information]
+
 ## 1.文件架构
 大致流程分布包括：A（数据描述及预处理）、B（模型训练）、C（模型预测）[、D（模型整合）]
 目前所拥有的文件包括：
