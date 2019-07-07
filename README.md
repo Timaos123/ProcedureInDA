@@ -1,1 +1,3 @@
-# ProcedureInDA
+# ProcedureInDA 使用说明
+
+大致流程分布包括：A（数据描述及预处理）、B（模型训练）、C（模型预测）[、D（模型整合）]
