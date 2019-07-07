@@ -67,6 +67,9 @@ C1_predictWithDL.py：深度学习预测
 >>模型名称Model（eg.SVMModel.h5）
 
 ## 3.代码架构
+
+尽量把所有固定过程都放到子函数中
+
 ````
 #coding:utf8
 
@@ -74,13 +77,13 @@ import pandas as pd
 import numpy as np
 
 def getTimeItemData():
-    '''获取 时间-商品 数据'''
+    '''获取 时间-商品 数据'''#子函数要有注释
     trainDf=pd.read_csv("data/Antai_AE_round1_item_attr_20190626.csv")[:50]
     print(trainDf[:2])
     timeList=list(set(np.array(trainDf["create_order_time"]).tolist()))
     timeItemList=[[timeItem,",".join(np.array(trainDf.loc["item_id",trainDf["create_order_time"]==timeItem]).tolist())] for timeItem in timeList]
     print(timeItemList)
 
-if __name__=="__main__":
+if __name__=="__main__":#要有主函数
     getTimeItemData()
 ````
