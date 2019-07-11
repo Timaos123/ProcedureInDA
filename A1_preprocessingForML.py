@@ -23,7 +23,7 @@ def getItemBuyerDataSingleTh(itemList,argList):
 
 def getItemBuyerData():  
     '''获取 商品-用户 数据'''
-    trainDf = pd.read_csv("data/Antai_AE_round1_train_20190626.csv").sort_values(by=["buyer_admin_id","irank"])[:100000]
+    trainDf = pd.read_csv("data/Antai_AE_round1_train_20190626.csv").sort_values(by=["buyer_admin_id","irank"],ascending=False)
     itemList=list(set(np.array(trainDf["item_id"]).tolist()))
     itemBuyerList=tml.multiListProcess(getItemBuyerDataSingleTh,[trainDf],itemList)
     itemBuyerDf=pd.DataFrame(np.array(itemBuyerList),columns=["item_id","buyer_admin_id"])
@@ -37,7 +37,7 @@ def getBuyerItemDataSingleTh(buyerList,argList):
     
 def getBuyerItemData():
     '''获取 用户-商品 数据'''
-    trainDf = pd.read_csv("data/Antai_AE_round1_train_20190626.csv").sort_values(by=["buyer_admin_id","irank"])[:100000]
+    trainDf = pd.read_csv("data/Antai_AE_round1_train_20190626.csv").sort_values(by=["buyer_admin_id","irank"],ascending=False)
     buyerList=list(set(np.array(trainDf["buyer_admin_id"]).tolist()))
     buyerItemList=tml.multiListProcess(getBuyerItemDataSingleTh,[trainDf],buyerList)
     buyerItemDf=pd.DataFrame(np.array(buyerItemList),columns=["buyer_admin_id","item_id"])
@@ -45,6 +45,8 @@ def getBuyerItemData():
     print("finished")
 
 if __name__=="__main__":
-    # getTimeItemData()
+    print("configuring pair data in the form of text ...")
+    getTimeItemData()
     getItemBuyerData()
     getBuyerItemData()
+
