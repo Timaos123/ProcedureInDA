@@ -27,7 +27,7 @@ def getItemBuyerData():
     itemList=list(set(np.array(trainDf["item_id"]).tolist()))
     itemBuyerList=tml.multiListProcess(getItemBuyerDataSingleTh,[trainDf],itemList)
     itemBuyerDf=pd.DataFrame(np.array(itemBuyerList),columns=["item_id","buyer_admin_id"])
-    itemBuyerDf.to_csv("data/itemBuyerData.csv")
+    itemBuyerDf.to_csv("data/itemBuyerData.csv",index=None)
     print("finished")
 
 def getBuyerItemDataSingleTh(buyerList,argList):
@@ -41,7 +41,7 @@ def getBuyerItemData():
     buyerList=list(set(np.array(trainDf["buyer_admin_id"]).tolist()))
     buyerItemList=tml.multiListProcess(getBuyerItemDataSingleTh,[trainDf],buyerList)
     buyerItemDf=pd.DataFrame(np.array(buyerItemList),columns=["buyer_admin_id","item_id"])
-    buyerItemDf.to_csv("data/buyerItemData.csv")
+    buyerItemDf.to_csv("data/buyerItemData.csv",index=None)
     print("finished")
 
 if __name__=="__main__":
