@@ -58,7 +58,7 @@ class ItemCF(object):
         print("加载数据成功")
         pass
 
-    def generate_dataset(self, df, test_size):
+    def generate_dataset(self, df):
 
         print('划分数据为训练集跟测试集......')
 
@@ -70,7 +70,7 @@ class ItemCF(object):
         self.df_user_label = self.df_user_scaler.fit_transform(df['buyer_admin_id'])
         self.df_item_label = self.df_item_scaler.fit_transform(df['item_id'])
 
-        self.train_label_user, self.test_label_user = train_test_split(np.unique(self.df_user_label),test_size=test_size)
+        self.train_label_user, self.test_label_user = train_test_split(np.unique(self.df_user_label),test_size=self.test_size)
         print('验证集用户数为:{}'.format(len(self.test_label_user)))
 
         element = np.array([1] * len(df))
