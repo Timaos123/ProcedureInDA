@@ -46,7 +46,7 @@ class ItemCF(object):
 
         # self.csrmatrix = csrmatrix
 
-        self.csrmatrix = self.generate_dataset(df,self.test_size)
+        self.csrmatrix = self.generate_dataset(df)
         self.sim_item_csrmatrix = self.item_sim_matrix(self.csrmatrix)
         print('转化成功！')
 
