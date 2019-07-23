@@ -7,16 +7,16 @@
 ,则f(x)的值加1，如处于以外，则为0，即保持不变
 
 该user-item矩阵为未建立兴趣指标函数前的矩阵，例如（B,b）=2意为B用户买了b商品2次。
-	  Item	a 	b 	c 	d 	e
-User	A 	1 	1 	0 	1 	0
+	  		Item	a 	b 	c 	d 	e
+		User	A 	1 	1 	0 	1 	0
 			B 	0 	2 	1 	0 	1
 			C 	0 	0 	1 	1 	0	
 			D 	0 	1 	1 	1 	0
 			E 	1 	0 	0 	3 	0
 假设建立好兴趣指标函数f(x)后，user-item矩阵可能变为如下矩阵,即从"user-item-购买次数"矩阵变为"user-item-score"矩阵
 之后算法照旧运行（test.py）➡得出结果➡提交
-	  Item	a 	b 	c 	d 	e
-User	A 	3 	4 	0 	3 	0
+	 		 Item	a 	b 	c 	d 	e
+		User	A 	3 	4 	0 	3 	0
 			B 	0 	5 	2 	0 	1
 			C 	0 	0 	3 	6 	0	
 			D 	0 	2 	4 	2 	0
