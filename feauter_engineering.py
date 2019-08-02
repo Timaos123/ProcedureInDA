@@ -27,59 +27,59 @@ import pandas as pd
 import pickle
 from datetime import datetime
 from scipy import stats
-test=pd.read_csv('drive/tianchi/Antai_AE_round1_test_20190626.csv')
-item=pd.read_csv('drive/tianchi/Antai_AE_round1_item_attr_20190626.csv')
-train=pd.read_csv('drive/tianchi/Antai_AE_round1_train_20190626.csv')
+import os
+os.chdir(os.getcwd())
+
+test = pd.read_csv('Antai_AE_round1_test_20190626.csv')
+#item = pd.read_csv('Antai_AE_round1_item_attr_20190626.csv')
+train = pd.read_csv('Antai_AE_round1_train_20190626.csv')
 
 start = datetime.now()
 
 df=pd.concat([train,test],ignore_index=True)
-all_data=pd.merge(df,item,on=['item_id'],how='left')
-del df
-all_data['create_order_time'] = all_data.create_order_time.apply(lambda x:pd.to_datetime(x))
-all_data['hour']=all_data['create_order_time'].dt.hour
-all_data['date']=all_data['create_order_time'].dt.day
-all_data['month']=all_data['create_order_time'].dt.month
+# all_data=pd.merge(df,item,on=['item_id'],how='left')
+# del df
+# all_data['create_order_time'] = all_data.create_order_time.apply(lambda x:pd.to_datetime(x))
+# all_data['hour']=all_data['create_order_time'].dt.hour
+# all_data['date']=all_data['create_order_time'].dt.day
+# all_data['month']=all_data['create_order_time'].dt.month
+#
+# all_data.drop(['create_order_time'],axis=1,inplace=True)
+# all_data['cate_id'].fillna(0,inplace=True)
+# all_data['store_id'].fillna(0,inplace=True)
+# all_data['item_price'].fillna(0,inplace=True)
+#
+# all_data['buyer_country_id']=all_data['buyer_country_id'].astype('category')
+# all_data['buyer_admin_id']=all_data['buyer_admin_id'].astype('int32')
+# all_data['item_id']=all_data['item_id'].astype('int32')
+# all_data['irank']=all_data['irank'].astype('int8')
+# all_data['cate_id']=all_data['cate_id'].astype('int32')
+# all_data['store_id']=all_data['store_id'].astype('int32')
+# all_data['hour']=all_data['hour'].astype('int8')
+# all_data['month']=all_data['month'].astype('int8')
+# all_data['date']=all_data['date'].astype('int8')
+#
+# #商店
+# group = all_data.groupby('store_id')['item_price'].agg({'store_avg_price':'mean'})
+# group.reset_index(inplace=True)
+# all_data = pd.merge(all_data,group,on='store_id',how='left')
+#
+# group = all_data.groupby('store_id')['item_id'].agg({'store_buyer_num':'count'})
+# group.reset_index(inplace=True)
+# all_data = pd.merge(all_data,group,on='store_id',how='left')
+#
+# group = all_data.groupby('store_id')['item_id'].agg({'store_item_num':lambda x :len(x.unique())})
+# group.reset_index(inplace=True)
+# all_data = pd.merge(all_data,group,on='store_id',how='left')
+#
+# #买家
+# group = all_data.groupby('buyer_admin_id')['item_price'].agg({'buyer_average_price':'mean'})
+# group.reset_index(inplace=True)
+# all_data = pd.merge(all_data,group,on='buyer_admin_id',how='left')
+#
+# group = all_data.groupby('buyer_admin_id')['item_id'].agg({'buyer_shopping_num':'count'})
+# group.reset_index(inplace=True)
+# all_data = pd.merge(all_data,group,on='buyer_admin_id',how='left')
 
-all_data.drop(['create_order_time'],axis=1,inplace=True)
-all_data['cate_id'].fillna(0,inplace=True)
-all_data['store_id'].fillna(0,inplace=True)
-all_data['item_price'].fillna(0,inplace=True)
-
-all_data['buyer_country_id']=all_data['buyer_country_id'].astype('category')
-all_data['buyer_admin_id']=all_data['buyer_admin_id'].astype('int32')
-all_data['item_id']=all_data['item_id'].astype('int32')
-all_data['irank']=all_data['irank'].astype('int8')
-all_data['cate_id']=all_data['cate_id'].astype('int32')
-all_data['store_id']=all_data['store_id'].astype('int32')
-all_data['hour']=all_data['hour'].astype('int8')
-all_data['month']=all_data['month'].astype('int8')
-all_data['date']=all_data['date'].astype('int8')
-
-#商店
-group = all_data.groupby('store_id')['item_price'].agg({'store_avg_price':'mean'})
-group.reset_index(inplace=True)
-all_data = pd.merge(all_data,group,on='store_id',how='left')
-
-group = all_data.groupby('store_id')['item_id'].agg({'store_buyer_num':'count'})
-group.reset_index(inplace=True)
-all_data = pd.merge(all_data,group,on='store_id',how='left')
-
-group = all_data.groupby('store_id')['item_id'].agg({'store_item_num':lambda x :len(x.unique())})
-group.reset_index(inplace=True)
-all_data = pd.merge(all_data,group,on='store_id',how='left')
-
-#买家
-group = all_data.groupby('buyer_admin_id')['item_price'].agg({'buyer_average_price':'mean'})
-group.reset_index(inplace=True)
-all_data = pd.merge(all_data,group,on='buyer_admin_id',how='left')
-
-group = all_data.groupby('buyer_admin_id')['item_id'].agg({'buyer_shopping_num':'count'})
-group.reset_index(inplace=True)
-all_data = pd.merge(all_data,group,on='buyer_admin_id',how='left')
-
-all_data.to_pickle('drive/tianchi/all_data.pkl')
+df.to_pickle('all_data.pkl')
 print('总共耗时{}'.format(datetime.now() - start))
-
-#all_data = pd.read_pickle('drive/tianchi/all_data.pkl')
-#all_data.info(null_counts=True)
